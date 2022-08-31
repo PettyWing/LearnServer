@@ -2,6 +2,7 @@ package com.example.springyouerdemo.controller;
 
 import com.example.springyouerdemo.entity.MyResource;
 import com.example.springyouerdemo.entity.SysUser;
+import com.example.springyouerdemo.entity2.User;
 import com.example.springyouerdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -39,6 +40,23 @@ public class UserController {
         user.setIsDelete(0);
         try {
             userService.saveUser(user);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return user;
+    }
+
+    @RequestMapping("/mybatis/saveUser2")
+    public User saveUser2() {
+        User user = new User();
+        // 记得每次id要加
+        user.setId("22");
+        user.setUsername("spring boot12");
+        user.setNickname("spring boot12");
+        user.setPassword("abc123");
+        user.setIsDelete(0);
+        try {
+            userService.saveUser2(user);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

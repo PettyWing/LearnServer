@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.example.springyouerdemo.mapper")
+@MapperScan(basePackages = {"com.example.springyouerdemo.mapper","com.example.springyouerdemo.mapper2"})
 public class SpringYouerDemoApplication {
 
     public static void main(String[] args) {
