@@ -2,6 +2,7 @@ package com.example.springyouerdemo.service;
 
 import com.example.springyouerdemo.entity.SysUser;
 import com.example.springyouerdemo.mapper.SysUserMapper;
+import com.example.springyouerdemo.mapper.SysUserMapperCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
     @Autowired
     private SysUserMapper userMapper;
+    @Autowired
+    private SysUserMapperCustom userMapperCustom;
+
     @Override
     public void saveUser(SysUser user) throws Exception {
         userMapper.insert(user);
@@ -35,5 +39,14 @@ public class UserServiceImpl implements UserService{
     }
     @Override
     public void saveUserTransactional(SysUser user) {
+    }
+
+    @Override
+    public SysUser queryUserByIdCustom(String userId) {
+        List<SysUser> userList = userMapperCustom.queryUserSimplyInfoById(userId);
+        if(userList !=null && !userList.isEmpty()){
+            return userList.get(0);
+        }
+        return null;
     }
 }

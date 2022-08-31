@@ -60,7 +60,7 @@ public class UserController {
             return user;
         } else {
             try {
-                user = userService.queryUserById("21");
+                user = userService.queryUserByIdCustom("21");
                 // 表明非redis获取
                 user.setSex(0);
                 redisTemplate.opsForValue().set("user", user);

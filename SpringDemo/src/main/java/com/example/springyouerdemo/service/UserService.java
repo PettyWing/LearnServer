@@ -16,4 +16,6 @@ public interface UserService {
     public List<SysUser> queryUserList(SysUser user);
 
     public void saveUserTransactional(SysUser user);
+
+    public SysUser queryUserByIdCustom(String userId);
 }
