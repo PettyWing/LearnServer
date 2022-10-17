@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 
 @Controller
 @ResponseBody  // RestController = Controller + ResponseBody
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -24,12 +25,11 @@ public class UserController {
     RedisTemplate<String, Object> redisTemplate;
 
     @RequestMapping("/hello")
-
     public String hello() {
         return "hello world";
     }
 
-    @RequestMapping("/mybatis/saveUser")
+    @RequestMapping("/saveUser")
     public SysUser saveUser() {
         SysUser user = new SysUser();
         // 记得每次id要加
@@ -46,7 +46,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping("/mybatis/saveUser2")
+    @RequestMapping("/saveUser2")
     public User saveUser2() {
         User user = new User();
         // 记得每次id要加
@@ -68,7 +68,7 @@ public class UserController {
      *
      * @return
      */
-    @RequestMapping("/redis/getUserByRedis")
+    @RequestMapping("/getUserByRedis")
     public SysUser getUser() {
         SysUser user = null;
         if (redisTemplate.opsForValue().get("user") != null) {
