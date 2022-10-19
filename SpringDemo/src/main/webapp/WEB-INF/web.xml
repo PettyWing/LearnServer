@@ -23,4 +23,14 @@
         <!--  配置拦截路径，/表示全拦截，不能用/*   ！！！   -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!-- 配置监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:bean.xml</param-value>
+    </context-param>
+
 </web-app>

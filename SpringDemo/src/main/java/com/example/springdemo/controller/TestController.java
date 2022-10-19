@@ -1,21 +1,34 @@
 package com.example.springdemo.controller;
 
 import com.example.springdemo.bean.Greeting;
+import com.example.springdemo.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TestController {
+    @Autowired
+    ApplicationContext applicationContext;
+    @Autowired
+    TestService testService;
+
+    public TestController() {
+    }
 
     @GetMapping("/hello")
     public ModelAndView doTest1() {
         System.out.println("doTest");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("hello");
+//        ApplicationContext context =
+//                new ClassPathXmlApplicationContext("bean.xml");
+//        XmlRootTest xmlRootTest = (XmlRootTest) context.getBean("xmlRootTest");
+        System.out.println(testService.getXmlRootTest().getName());
         return modelAndView;
     }
 

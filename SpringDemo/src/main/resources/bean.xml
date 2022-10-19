@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+       http://www.springframework.org/schema/tx"
+       default-autowire="byName">
+    <context:component-scan base-package="com.example.springdemo.service">
+        <!-- 启用注解扫描，并定义组件查找规则 ，除了@controller，扫描所有的Bean -->
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+    <bean id="xmlRootTest" class="com.example.springdemo.bean.XmlRootTest">
+        <property name="name" value="测试名字"/>
+        <property name="path" value="测试路径"/>
+    </bean>
+
+    <bean id="testService" class="com.example.springdemo.service.TestService">
+        <property name="xmlRootTest" ref="xmlRootTest"/>
+    </bean>
+
+</beans>
