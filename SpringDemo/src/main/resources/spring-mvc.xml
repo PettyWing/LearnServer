@@ -10,7 +10,7 @@
     <!-- 定义controller扫描包   -->
     <!-- 启用注解扫描，并定义组件查找规则 ，mvc层只负责扫描@Controller、@ControllerAdvice -->
     <!-- base-package 如果多个，用“,”分隔 -->
-    <context:component-scan base-package="com.example.springdemo.controller"
+    <context:component-scan base-package="com.example.springdemo"
                             use-default-filters="false">
         <!-- 扫描@Controller -->
         <context:include-filter type="annotation"
@@ -38,4 +38,7 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <bean id="testController" class="com.example.springdemo.controller.TestController">
+        <property name="testService" ref="testService"/>
+    </bean>
 </beans>

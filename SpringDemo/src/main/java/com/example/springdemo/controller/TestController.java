@@ -1,6 +1,8 @@
 package com.example.springdemo.controller;
 
+import com.example.springdemo.bean.AnnotationTest;
 import com.example.springdemo.bean.Greeting;
+import com.example.springdemo.bean.XmlRootTest;
 import com.example.springdemo.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -13,12 +15,17 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController {
     @Autowired
-    ApplicationContext applicationContext;
+    AnnotationTest annotationTest;
     @Autowired
+    ApplicationContext applicationContext;
     TestService testService;
 
-    public TestController() {
+    public TestController setTestService(TestService testService) {
+        this.testService = testService;
+        return this;
     }
+    @Autowired
+    TestService testService1;
 
     @GetMapping("/hello")
     public ModelAndView doTest1() {
@@ -28,7 +35,7 @@ public class TestController {
 //        ApplicationContext context =
 //                new ClassPathXmlApplicationContext("bean.xml");
 //        XmlRootTest xmlRootTest = (XmlRootTest) context.getBean("xmlRootTest");
-        System.out.println(testService.getXmlRootTest().getName());
+//        System.out.println(testService.getXmlRootTest().getName());
         return modelAndView;
     }
 
