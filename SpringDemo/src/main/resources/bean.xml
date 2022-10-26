@@ -4,13 +4,15 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:javajr="https://spring.example.com/schema/test"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-4.2.xsd
-       http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
-       http://www.springframework.org/schema/tx"
+              http://www.springframework.org/schema/beans/spring-beans.xsd
+              http://www.springframework.org/schema/context
+              http://www.springframework.org/schema/context/spring-context-4.2.xsd
+              https://spring.example.com/schema/test
+              https://spring.example.com/schema/test.xsd
+              http://www.springframework.org/schema/aop
+              http://www.springframework.org/schema/aop/spring-aop-4.2.xsd"
        default-autowire="byName">
     <context:component-scan base-package="com.example.springdemo">
         <!-- 启用注解扫描，并定义组件查找规则 ，除了@controller，扫描所有的Bean -->
@@ -27,5 +29,7 @@
     <bean id="testService" class="com.example.springdemo.service.TestService">
         <property name="xmlRootTest" ref="xmlRootTest"/>
     </bean>
+
+    <javajr:application id="demo" website="youer.test" weixin="youer"></javajr:application>
 
 </beans>
